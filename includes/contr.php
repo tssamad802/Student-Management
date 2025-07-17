@@ -1,5 +1,5 @@
 <?php
-class controller {
+class controller extends user {
     public function is_empty_inputs($name, $email, $class) {
         return empty($name) || empty($email) || empty($class);
     }

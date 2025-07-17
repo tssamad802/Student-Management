@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $db = new database();
     $conn = $db->connection();
-    $controller = new controller();
+    $controller = new controller($conn);
     $user = new user($conn);
     $errors = [];
     try {
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors[] = "class is invalid";
         }
 
-        if ($user->get_email($email)) {
+        if ($controller->get_email($email)) {
             $errors[] = "email has already exists";
         }
 

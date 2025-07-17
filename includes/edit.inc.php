@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
    $db = new database();
    $conn = $db->connection();
-   $controller = new controller();
+   $controller = new controller($conn);
    $user = new user($conn);
    $errors = [];
 
