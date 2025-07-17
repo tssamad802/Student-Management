@@ -1,11 +1,14 @@
 <?php
-class user {
+class user
+{
     public $conn;
 
-    public function __construct($conn) {
+    public function __construct($conn)
+    {
         $this->conn = $conn;
     }
-    public function get_email($email) {
+    public function get_email($email)
+    {
         $sql = "SELECT * FROM `student_records` WHERE email = :email";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':email', $email);
@@ -14,7 +17,8 @@ class user {
         return $result;
     }
 
-    public function get_records_by_id($id) {
+    public function get_records_by_id($id)
+    {
         $stmt = $this->conn->prepare("SELECT * FROM student_records WHERE id = :id");
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -22,7 +26,8 @@ class user {
     }
 
 
-    public function create($name, $email, $class) {
+    public function create($name, $email, $class)
+    {
         $sql = "INSERT INTO `student_records`(`name`, `email`, `class`) VALUES (:name, :email, :class);";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':name', $name);
@@ -33,7 +38,8 @@ class user {
         return true;
     }
 
-    public function read() {
+    public function read()
+    {
         $sql = "SELECT * FROM `student_records`";
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
@@ -41,7 +47,8 @@ class user {
         return $result;
     }
 
-    public function update($id, $name, $email, $class) {
+    public function update($id, $name, $email, $class)
+    {
         $sql = "UPDATE `student_records` SET name = :name, email = :email, class = :class WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -53,7 +60,8 @@ class user {
         return true;
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $sql = "DELETE FROM `student_records` WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id);
