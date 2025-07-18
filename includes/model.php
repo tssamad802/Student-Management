@@ -1,5 +1,20 @@
 <?php
-class user
+
+interface student_interface
+{
+    public function get_email($email);
+
+    public function get_records_by_id($id);
+
+    function create($name, $email, $class);
+
+    function read();
+
+    function update($id, $name, $email, $class);
+
+    function delete($id);
+}
+class user implements student_interface
 {
     public $conn;
 
